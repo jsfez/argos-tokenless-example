@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@argos-ci/cli": "^0.2.5"
+    "@argos-ci/cli": "^0.3.2"
   }
 }
