@@ -34,4 +34,4 @@ jobs:
       # -----
 
       - name: Upload screenshots to argos-ci.com
-        run: npx @argos-ci/cli upload ./screenshots
+        run: DEBUG=* npx @argos-ci/cli upload ./screenshots
