@@ -34,6 +34,4 @@ jobs:
       # -----
 
       - name: Upload screenshots to argos-ci.com
-        env:
-          ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
         run: npx @argos-ci/cli upload ./screenshots
