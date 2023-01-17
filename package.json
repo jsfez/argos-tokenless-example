@@ -7,8 +7,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@argos-ci/cli": "^0.3.2"
-  }
+  "license": "ISC"
 }

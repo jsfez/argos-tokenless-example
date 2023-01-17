@@ -1,21 +1,19 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
+    types: [synchronize, labeled]
 
 jobs:
-  ci:
+  label:
+    if: (github.event.action=='labeled' && github.event.label.name=='pipeline-full') || (github.event.action!='labeled' && contains(github.event.pull_request.labels.*.name, 'pipeline-full'))
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
         with:
-          # A minimal fetch-depth of 2 is required
-          # to automatically detect branch in @argos-ci/cli
           fetch-depth: 2
 
       - name: Use Node.js ${{ matrix.node-version }}
@@ -26,12 +24,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # -----
-      # Insert here your steps required to take screenshots of
-      # your components or of your application.
-      #
-      # Find integrations on https://docs.argos-ci.com/
-      # -----
-
       - name: Upload screenshots to argos-ci.com
-        run: npx @argos-ci/cli upload ./screenshots
+        run: DEBUG=* npx @argos-ci/cli upload ./screenshots
